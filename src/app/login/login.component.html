@@ -1,0 +1,57 @@
+<h1 class="m-lg-5">Login Form!</h1>
+<div class="container">
+  <div class="col-5">
+    <form class="form-control" [formGroup]="loginForm" (ngSubmit)="check()"  >
+
+
+      <div class="row">
+        <div class="col-2">
+          <label> Account: </label>
+        </div>
+        <div class="col-10">
+          <input type="text"  formControlName="account">
+        </div>
+
+        <div *ngIf="!account?.valid && (account?.dirty || account?.touched)">
+          <div [hidden]="!account?.errors?.['required']">
+            <p style="color: red"> Account is required </p>
+          </div>
+          <div [hidden]="!account?.errors?.['minlength']">
+            <p style="color: red"> Account min length 3 </p>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <div class="row mt-3">
+        <div class="col-2">
+          <label> Password: </label>
+        </div>
+        <div class="col-10">
+          <input type="password" formControlName="password">
+        </div>
+        <div *ngIf="!password?.valid && (password?.dirty || password?.touched)">
+          <div [hidden]="!password?.errors?.['required']">
+            <p style="color: red"> Password is required </p>
+          </div>
+          <div [hidden]="!password?.errors?.['minlength']">
+            <p style="color: red"> Password min length 6 </p>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="row justify-content-center">
+        <input class=" col-4 mt-3" type="submit" value="Dang nhap" [disabled]="!loginForm.valid" >
+      </div>
+
+
+
+    </form>
+  </div>
+
+</div>
